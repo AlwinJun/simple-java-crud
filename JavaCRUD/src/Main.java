@@ -21,7 +21,7 @@ class JavaFrame extends JFrame{
 	 DefaultTableModel model;
 	 JTable table;
 	
-	//int initialKey = 1;
+	int initialKey = 1;
 	
 	JavaFrame(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +46,7 @@ class JavaFrame extends JFrame{
 		tablePanel.setBounds(10, 90, 540, 420);
 		
 		model = new DefaultTableModel(new Object[]{
-					/*"Book Id",*/
+					"Book Id",
 					"Book Name",
 					"Author",
 					"Price"
@@ -78,7 +78,7 @@ class JavaFrame extends JFrame{
 		//formPanel.setBackground(Color.green);
 		formPanel.setBounds(550, 90, 280, 420);
 		
-	/*	JPanel idPanel = new JPanel(new GridLayout(2,1));
+		JPanel idPanel = new JPanel(new GridLayout(2,1));
 		idPanel.setPreferredSize(new Dimension(270, 60));
 		//idPanel.setBackground(Color.yellow);
 		lblId = new JLabel();
@@ -90,7 +90,7 @@ class JavaFrame extends JFrame{
 		txtId.setBackground(Color.white);
 		txtId.setForeground(Color.black);
 		txtId.setFont(new Font("Tahoma", Font.PLAIN,14));
-		txtId.setPreferredSize(new Dimension(60, 15));   */
+		txtId.setPreferredSize(new Dimension(60, 15));   
 		
 		JPanel namePanel = new JPanel(new GridLayout(2,1));
 		namePanel.setPreferredSize(new Dimension(270, 60));
@@ -157,7 +157,7 @@ class JavaFrame extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//int bookId = initialKey;
+				int bookId = initialKey;
 				String bookName = txtName.getText();
 				String author = txtAuthor.getText();
 				double price;
@@ -176,7 +176,7 @@ class JavaFrame extends JFrame{
 				}
 				
 				model.addRow(new Object[]{/*bookId, */ bookName, author, price});
-				//initialKey++;
+				initialKey++;
 				
 				txtName.setText("");
 				txtAuthor.setText("");
@@ -192,17 +192,17 @@ class JavaFrame extends JFrame{
 		            int selectedRow = table.getSelectedRow();
 
 		            // Get the data from the selected row
-		           // String bookId = String.valueOf(model.getValueAt(selectedRow, 0));
+		            String bookId = String.valueOf(model.getValueAt(selectedRow, 0));
 		            String bookName = (String) model.getValueAt(selectedRow, 1);
 		            String author = (String) model.getValueAt(selectedRow, 2);
 		            String price = String.valueOf(model.getValueAt(selectedRow, 3));
 
 		            // Set the data to the text fields
-		          //  txtId.setText(bookId);
+		            txtId.setText(bookId);
 		            txtName.setText(bookName);
 		            txtAuthor.setText(author);
 		            txtPrice.setText(price);
-		          //  txtId.setEditable(false);
+		            txtId.setEditable(false);
 		            txtName.setEditable(true);
 		            txtAuthor.setEditable(true);
 		            txtPrice.setEditable(true);
@@ -242,7 +242,7 @@ class JavaFrame extends JFrame{
 		        table.setValueAt(price, selectedRow, 3);
 		        
 		        // Clear textfeilds
-			//	txtId.setText("");
+				txtId.setText("");
 				txtName.setText("");
 				txtAuthor.setText("");
 				txtPrice.setText("");
@@ -274,7 +274,7 @@ class JavaFrame extends JFrame{
 		            model.removeRow(selectedRow);
 		        }
 		        
-			//	txtId.setText("");
+				txtId.setText("");
 				txtName.setText("");
 				txtAuthor.setText("");
 				txtPrice.setText("");
@@ -288,9 +288,9 @@ class JavaFrame extends JFrame{
 		this.add(tablePanel);
 		tablePanel.add(new JScrollPane(table));
 		this.add(formPanel);
-	//	formPanel.add(idPanel);
-	//	idPanel.add(lblId);
-	//	idPanel.add(txtId);
+		formPanel.add(idPanel);
+		idPanel.add(lblId);
+		idPanel.add(txtId);
 		formPanel.add(namePanel);
 		namePanel.add(lblName);
 		namePanel.add(txtName);
